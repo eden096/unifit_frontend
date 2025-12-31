@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { LayoutDashboard, Users, LogOut, Menu, Settings, BookOpen, GraduationCap, Compass } from 'lucide-react';
+import unifitLogo from '../assets/unifit_logo.png';
 
 interface SidebarProps {
   isExpanded: boolean;
@@ -26,18 +27,22 @@ const Sidebar: React.FC<SidebarProps> = ({ isExpanded, toggleSidebar }) => {
       }`}
     >
       {/* 상단: 햄버거 메뉴 버튼 및 로고 */}
-      <div className="h-20 flex items-center border-b border-gray-100 px-2">
+      <div className="h-20 flex items-center border-b border-gray-100 px-2 overflow-hidden">
         <button 
           onClick={toggleSidebar}
-          className={`h-16 w-16 flex items-center justify-center text-gray-500 hover:text-violet-600 focus:outline-none rounded-lg transition-colors`}
+          className={`h-16 w-16 flex-shrink-0 flex items-center justify-center text-gray-500 hover:text-violet-600 focus:outline-none rounded-lg transition-colors`}
         >
           <Menu size={32} />
         </button>
-        {isExpanded && (
-          <span className="text-xl font-bold text-violet-600 ml-4 animate-fade-in whitespace-nowrap overflow-hidden">
-            UniFit
-          </span>
-        )}
+        <div className={`flex items-center transition-all duration-300 ease-in-out overflow-hidden ${
+          isExpanded ? 'w-40 opacity-100 ml-4' : 'w-0 opacity-0 ml-0'
+        }`}>
+          <img 
+            src={unifitLogo} 
+            alt="UniFit" 
+            className="h-10 object-contain" 
+          />
+        </div>
       </div>
       
       {/* 네비게이션 메뉴 */}

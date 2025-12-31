@@ -3,9 +3,7 @@ import { Search } from 'lucide-react';
 
 const TeamSearch: React.FC = () => {
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">팀원 찾기</h1>
-      
+    <div>
       {/* 검색 바 */}
       <div className="flex items-center bg-white border border-gray-300 rounded-lg px-4 py-2 mb-6 max-w-xl">
         <Search className="text-gray-400 w-5 h-5 mr-3" />

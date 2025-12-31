@@ -2,8 +2,7 @@ import React from 'react';
 
 const PlaceholderPage: React.FC<{ title: string }> = ({ title }) => {
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">{title}</h1>
+    <div>
       <div className="bg-white p-10 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center justify-center min-h-[400px]">
         <div className="w-20 h-20 bg-violet-50 text-violet-600 rounded-full flex items-center justify-center mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M2 12h20"/></svg>
