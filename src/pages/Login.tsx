@@ -7,7 +7,6 @@ const Login: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: 실제 로그인 로직 구현
     navigate('/');
   };
 
