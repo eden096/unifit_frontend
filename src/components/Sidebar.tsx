@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { LayoutDashboard, Users, LogOut, Menu, Settings, BookOpen, GraduationCap, Compass } from 'lucide-react';
 import unifitLogo from '../assets/unifit_logo.png';
+import userIcon from '../assets/user_icon.png';
 import { useAuth } from '../contexts/AuthContext';
 
 interface SidebarProps {
@@ -30,8 +31,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isExpanded, toggleSidebar }) => {
     ? allMenuItems 
     : allMenuItems.filter(item => item.name === '대시보드');
 
-  // 더미 프로필 이미지 URL
-  const profileImageUrl = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop";
+  // 프로필 이미지
+  const profileImageUrl = userIcon;
 
   return (
     <div 
@@ -119,7 +120,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isExpanded, toggleSidebar }) => {
             isExpanded ? 'opacity-100 pr-6' : 'opacity-0 w-0 pr-0'
           }`}>
             <span className="font-bold text-lg text-gray-800 whitespace-nowrap truncate ml-2">
-              김유니
+              김ㅇㅇ
             </span>
             
             <div className="flex items-center gap-2 flex-shrink-0 ml-2">

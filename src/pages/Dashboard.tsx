@@ -1,7 +1,6 @@
 import React from 'react';
 import { Users, BookOpen, GraduationCap, Compass, ChevronRight } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import userLevelImg from '../assets/user_level.png';
 import { useAuth } from '../contexts/AuthContext';
 
 const Dashboard: React.FC = () => {
@@ -57,52 +56,49 @@ const Dashboard: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-start w-full">
       
-      <div className="w-full max-w-[1240px]"> {/* 전체 컨테이너 너비 제한 (400*3 + 간격 고려) */}
+      <div className="w-full max-w-[1600px]"> {/* 전체 컨테이너 너비 제한 증가 */}
         
-        <div className="flex flex-col xl:flex-row gap-6 justify-center items-start">
+        <div className="flex flex-col xl:flex-row gap-8 justify-center items-start">
           
-          {/* 좌측: 2x2 그리드 (각 400x245) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* 좌측: 2x2 그리드 (각 500x306) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {mainCards.map((card, index) => (
               <Link 
                 to={card.path}
                 key={index}
-                className="group relative bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col justify-between"
-                style={{ width: '400px', height: '245px' }} // 요청하신 고정 크기
+                className="group relative bg-white rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col justify-between"
+                style={{ width: '500px', height: '306px' }} 
               >
                 {/* 상단 아이콘 및 타이틀 영역 */}
-                <div className="p-8">
-                  <div className={`${card.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
-                    {card.icon}
+                <div className="p-10">
+                  <div className={`${card.color} w-20 h-20 rounded-3xl flex items-center justify-center mb-8 shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
+                    {/* 아이콘 크기 증가 */}
+                    {React.cloneElement(card.icon as React.ReactElement, { className: "w-10 h-10 text-white" })}
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2 group-hover:text-violet-600 transition-colors">
+                  <h3 className="text-3xl font-bold text-gray-800 mb-3 group-hover:text-violet-600 transition-colors">
                     {card.title}
                   </h3>
-                  <p className="text-gray-500 font-medium break-keep">
+                  <p className="text-gray-500 text-lg font-medium break-keep">
                     {card.desc}
                   </p>
                 </div>
 
                 {/* 하단 화살표 (호버 시 이동) */}
-                <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300">
-                  <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400">
-                    <ChevronRight size={24} />
+                <div className="absolute bottom-8 right-8 opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300">
+                  <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-400">
+                    <ChevronRight size={28} />
                   </div>
                 </div>
               </Link>
             ))}
           </div>
 
-          {/* 우측: 사용자 레벨 (400x516) */}
+          {/* 우측: 사용자 레벨 (500x644) */}
           <div 
-            className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden"
-            style={{ width: '400px', height: '516px' }}
+            className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden flex flex-col items-center justify-center"
+            style={{ width: '500px', height: '644px' }}
           >
-            <img 
-              src={userLevelImg} 
-              alt="사용자 레벨" 
-              className="w-full h-full object-cover"
-            />
+            <h2 className="text-3xl font-bold text-gray-800">사용자 레벨</h2>
           </div>
 
         </div>
