@@ -1,9 +1,13 @@
 import React from 'react';
 import { Users, BookOpen, GraduationCap, Compass, ChevronRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import userLevelImg from '../assets/user_level.png';
+import { useAuth } from '../contexts/AuthContext';
 
 const Dashboard: React.FC = () => {
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
   // 좌측 2x2 그리드에 들어갈 메뉴 데이터
   const mainCards = [
     { 
@@ -35,6 +39,20 @@ const Dashboard: React.FC = () => {
       path: '/career'
     },
   ];
+
+  if (!isAuthenticated) {
+    return (
+      <div className="flex flex-col items-center justify-center h-[calc(100vh-200px)]">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6">로그인해 unifit을 시작해보세요</h2>
+        <button
+          onClick={() => navigate('/login')}
+          className="bg-violet-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-violet-700 transition-colors shadow-md"
+        >
+          로그인
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center justify-start w-full">
